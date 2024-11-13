@@ -1,101 +1,176 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
+import { Container } from "@/components/Container";
+import logoMicrosoft from "@/images/logos/microsoft.svg";
+import logoPlantylight from "@/images/logos/plantylight.svg";
+import logoRicardo from "@/images/logos/ricardo.svg";
+import Image, { type ImageProps } from "next/image";
+
+const JOB_EXPERIENCES: ResumeItemProps[] = [
+  {
+    company: "Microsoft",
+    dates: {
+      from: "2022",
+    },
+    logo: logoMicrosoft,
+    jobTitle: "Product Manager",
+  },
+  {
+    company: "plantylight",
+    dates: {
+      from: "2023",
+    },
+    logo: logoPlantylight,
+    jobTitle: "3D Designer",
+  },
+  {
+    company: "Microsoft",
+    dates: { from: "2020", to: "2022" },
+    jobTitle: "Software Engineer",
+    logo: logoMicrosoft,
+  },
+  {
+    company: "Ricardo",
+    dates: {
+      from: "2018",
+      to: "2020",
+    },
+    jobTitle: "Software Engineer",
+    logo: logoRicardo,
+  },
+];
+
+function BriefcaseIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+      <path
+        d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
+        className="stroke-zinc-400 dark:stroke-zinc-500"
+      />
+    </svg>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+function SocialLink({
+  icon: Icon,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Link> & {
+  icon: React.ComponentType<{ className?: string }>;
+}) {
+  return (
+    <Link className="group -m-1 p-1" {...props}>
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+    </Link>
+  );
+}
+
+type ResumeItemProps = {
+  logo: ImageProps["src"];
+  dates: {
+    from: string;
+    to?: string;
+  };
+  company: string;
+  jobTitle: string;
+};
+
+function ResumeItem({ company, dates, logo, jobTitle }: ResumeItemProps) {
+  const endDate = dates.to || new Date().getFullYear().toString();
+  const endLabel = dates.to || "Present";
+
+  return (
+    <li className="flex gap-4">
+      <div className="flex mt-1h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+        <Image
+          className="w-7 h-7 rounded-full"
+          src={logo}
+          alt={`${company} logo`}
+        />
+      </div>
+      <dl className="flex flex-auto flex-wrap gap-x-2">
+        <dt className="sr-only">Company</dt>
+        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          {company}
+        </dd>
+        <dt className="sr-only">Role</dt>
+        <dd className="text-xs text-zinc-500 dark:text-zinc-400">{jobTitle}</dd>
+        <dt className="sr-only">Date</dt>
+        <dd
+          className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+          aria-label={`${dates.from} until ${endLabel}`}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <time dateTime={dates.from}>{dates.from}</time>{" "}
+          <span aria-hidden="true">-</span>{" "}
+          <time dateTime={endDate}>{endLabel}</time>
+        </dd>
+      </dl>
+    </li>
+  );
+}
+
+type ResumeProps = {
+  experiences: ResumeItemProps[];
+};
+
+function Resume({ experiences }: ResumeProps) {
+  return (
+    <div className="flex flex-col p-8 border border-zinc-100 dark:border-zinc-700/40 rounded-2xl gap-y-6 w-auto">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <BriefcaseIcon className="h-6 w-6 flex-none" />{" "}
+        <span className="ml-3">Work</span>
+      </h2>
+      <ol className="mt-6 space-y-4">
+        {experiences.map((role, roleIndex) => (
+          <ResumeItem key={roleIndex} {...role} />
+        ))}
+      </ol>
     </div>
+  );
+}
+
+export default async function Home() {
+  return (
+    <>
+      <Container className="mt-9">
+        <div className="flex flex-col max-w-2xl gap-y-6">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+            Web developer, Product Manager, and 3D printing enthusiast.
+          </h1>
+          <p className="text-base text-zinc-600 dark:text-zinc-400">
+            I&apos;m Pablo, a <span>Product Engineer</span> based in Valencia,
+            Spain. I&apos;m passionate about building products that make a
+            positive difference in people&apos;s lives.
+          </p>
+          <div className="flex flex-row gap-x-6">
+            <SocialLink
+              href="https://github.com/PabloGracia"
+              aria-label="Follow on Github"
+              icon={GitHubIcon}
+            />
+            <SocialLink
+              href="https://www.linkedin.com/in/pablograciagil/"
+              aria-label="Follow on Linkedin"
+              icon={LinkedInIcon}
+            />
+          </div>
+        </div>
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <Resume experiences={JOB_EXPERIENCES} />
+      </Container>
+    </>
   );
 }
