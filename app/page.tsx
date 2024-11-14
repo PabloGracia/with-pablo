@@ -7,6 +7,17 @@ import logoPlantylight from "@/images/logos/plantylight.svg";
 import logoRicardo from "@/images/logos/ricardo.svg";
 import Image, { type ImageProps } from "next/image";
 
+type ResumeItemProps = {
+  logo: ImageProps["src"];
+  dates: {
+    from: string;
+    to?: string;
+  };
+  company: string;
+  jobTitle: string;
+  order: number;
+};
+
 const JOB_EXPERIENCES: ResumeItemProps[] = [
   {
     company: "Microsoft",
@@ -15,6 +26,7 @@ const JOB_EXPERIENCES: ResumeItemProps[] = [
     },
     logo: logoMicrosoft,
     jobTitle: "Product Manager",
+    order: 3,
   },
   {
     company: "plantylight",
@@ -23,12 +35,14 @@ const JOB_EXPERIENCES: ResumeItemProps[] = [
     },
     logo: logoPlantylight,
     jobTitle: "3D Designer",
+    order: 4,
   },
   {
     company: "Microsoft",
     dates: { from: "2020", to: "2022" },
     jobTitle: "Software Engineer",
     logo: logoMicrosoft,
+    order: 2,
   },
   {
     company: "Ricardo",
@@ -38,6 +52,7 @@ const JOB_EXPERIENCES: ResumeItemProps[] = [
     },
     jobTitle: "Software Engineer",
     logo: logoRicardo,
+    order: 1,
   },
 ];
 
@@ -77,23 +92,13 @@ function SocialLink({
   );
 }
 
-type ResumeItemProps = {
-  logo: ImageProps["src"];
-  dates: {
-    from: string;
-    to?: string;
-  };
-  company: string;
-  jobTitle: string;
-};
-
 function ResumeItem({ company, dates, logo, jobTitle }: ResumeItemProps) {
   const endDate = dates.to || new Date().getFullYear().toString();
   const endLabel = dates.to || "Present";
 
   return (
     <li className="flex gap-4">
-      <div className="flex mt-1h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+      <div className="flex mt-1 h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
         <Image
           className="w-7 h-7 rounded-full"
           src={logo}
@@ -133,9 +138,11 @@ function Resume({ experiences }: ResumeProps) {
         <span className="ml-3">Work</span>
       </h2>
       <ol className="mt-6 space-y-4">
-        {experiences.map((role, roleIndex) => (
-          <ResumeItem key={roleIndex} {...role} />
-        ))}
+        {experiences
+          .sort((a, b) => b.order - a.order)
+          .map((role, roleIndex) => (
+            <ResumeItem key={roleIndex} {...role} />
+          ))}
       </ol>
     </div>
   );
