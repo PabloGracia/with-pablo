@@ -20,8 +20,8 @@ export default function RootLayout({
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <div className="flex w-full">
           <Layout>{children}</Layout>
-          <SpeedInsights />
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );
