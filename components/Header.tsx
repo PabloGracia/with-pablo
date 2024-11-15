@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "./Container";
+import { PAGE_LINKS } from "@/constants/page-links";
 
 type NavItemProps = {
   href: string;
@@ -36,8 +37,13 @@ function DesktopNavigation() {
   return (
     <nav className="hidden md:block">
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/">Home</NavItem>
-        <NavItem href="/about">About</NavItem>
+        {PAGE_LINKS.sort((a, b) => a.order - b.order).map(
+          ({ href, label, order }) => (
+            <NavItem key={order} href={href}>
+              {label}
+            </NavItem>
+          )
+        )}
       </ul>
     </nav>
   );
