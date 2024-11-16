@@ -154,7 +154,7 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="flex flex-col max-w-2xl gap-y-6">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-            Web developer, Product Manager, and 3D printing enthusiast.
+            Web developer, Product Manager, and 3D printing aficionado.
           </h1>
           <p className="text-base text-zinc-600 dark:text-zinc-400">
             I&apos;m Pablo, a <span>Product Engineer</span> based in Valencia,

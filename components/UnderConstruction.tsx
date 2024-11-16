@@ -29,8 +29,8 @@ export function UnderConstruction() {
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700  dark:from-yellow-400 dark:via-yellow-300 dark:to-yellow-400 text-transparent bg-clip-text">
-          Something Amazing Is Being Built
+        <h1 className="text-5xl font-bold pb-2 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700  dark:from-yellow-400 dark:via-yellow-300 dark:to-yellow-400 text-transparent bg-clip-text">
+          Something amazing is being built
         </h1>
 
         {/* Subheading */}
