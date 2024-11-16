@@ -4,7 +4,7 @@ import { ThemeProvider, useTheme } from "next-themes";
 import { useEffect } from "react";
 
 function ThemeWatcher() {
-  let { resolvedTheme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   useEffect(() => {
     // Check if window.matchMedia is supported
@@ -28,7 +28,7 @@ function ThemeWatcher() {
         colorSchemeQuery.removeEventListener("change", handleThemeChange);
       };
     }
-  }, []);
+  }, [setTheme]);
 
   return null;
 }
