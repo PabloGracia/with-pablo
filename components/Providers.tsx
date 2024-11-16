@@ -28,7 +28,7 @@ function ThemeWatcher() {
         colorSchemeQuery.removeEventListener("change", handleThemeChange);
       };
     }
-  }, [setTheme]);
+  }, []);
 
   return null;
 }
