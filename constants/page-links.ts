@@ -11,4 +11,9 @@ export const PAGE_LINKS: PageLink[] = [
     label: "Home",
     order: 1,
   },
+  {
+    href: "/projects",
+    label: "Projects",
+    order: 3,
+  },
 ];
