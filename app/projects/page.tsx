@@ -42,14 +42,16 @@ function Project({ href, logo, description, title }: ProjectProps) {
   return (
     <Link
       href={href}
-      className="group flex flex-col flex-1 w-auto gap-y-6 rounded-2xl transition hover:bg-zinc-100 dark:hover:bg-zinc-800 p-6"
+      className="group flex flex-col flex-1 w-auto gap-y-6 rounded-2xl transition delay-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 p-6"
     >
-      <Image src={logo} className="h-7 w-7" alt={`${title} logo`} />
-      <div className="flex flex-col gap-y-2">
+      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+        <Image src={logo} alt="" className="h-7 w-7" />
+      </div>
+      <div className="flex flex-col gap-y-3">
         <h3 className="text-zinc-800 dark:text-zinc-100 text-md font-semibold">
           {title}
         </h3>
-        <p className="text-zinc-400 dark:text-zinc-500 text-sm">
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm">
           {description}
         </p>
       </div>
