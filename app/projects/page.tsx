@@ -3,6 +3,7 @@ import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 
 import logoRocket from "@/images/logos/Rocket Holding Hand.svg";
+import mourningRibbon from "@/images/logos/Black Ribbon.svg";
 import { SimpleLayout } from "@/components/SimpleLayout";
 
 type ProjectProps = {
@@ -18,6 +19,12 @@ const PROJECTS: ProjectProps[] = [
     description: "This personal page you're visiting",
     href: "/projects/with-pablo",
     logo: logoRocket,
+  },
+  {
+    title: "Ajuda Dana",
+    description: 'Volunteering "marketplace"',
+    href: "/projects/ajudadana",
+    logo: mourningRibbon,
   },
 ];
 
