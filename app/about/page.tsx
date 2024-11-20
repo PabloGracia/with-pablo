@@ -60,10 +60,10 @@ export default async function Page() {
             <span className="italic">I&apos;m a creator at heart.</span> If you
             want to create things with me, you can find me at{" "}
             <a
-              href="mailto:pablo.graciag@gmail.com"
+              href="mailto:talk@with-pablo.com"
               className="text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
             >
-              pablo.graciag@gmail.com
+              talk@with-pablo.com
             </a>
             . Thank you for coming to my TED Talk.
           </p>
