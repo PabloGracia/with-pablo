@@ -72,29 +72,3 @@ export default async function Page() {
     </Container>
   );
 }
-
-/*
-I'm a creator at heart - the kind of person who sees a problem and can't help but think "I could build something to fix that." Whether it's crafting web applications, designing 3D-printed solutions for businesses, or developing a budgeting app to help couples manage their finances better, I'm driven by the satisfaction of turning ideas into real, useful things.
-My journey has taken me from web development to product management, and I've found that these roles complement each other perfectly. As a developer, I learned how to build solutions from the ground up. As a product manager, I've honed the ability to ensure those solutions truly matter to the people using them. It's not just about writing code or shipping features - it's about creating something that makes a difference in someone's life.
-This mindset extends beyond my professional work. When I noticed my partner and I struggling with shared budgeting, I didn't just look for existing solutions - I built one. When local businesses needed custom 3D-printed parts, I dove into CAD design to help them out. That's who I am: someone who thrives on turning challenges into opportunities to create something valuable.
-
-I've always been drawn to building things that matter. It's not just about creating something new - 
-it's about solving real problems that make a difference in people's lives. Recently, this drive led 
-me to help a local business overcome their manufacturing challenges through 3D design and printing. 
-There's something incredibly satisfying about starting with an idea on a screen and ending with a 
-functional piece that solves a real business need.
-
-My background in web development taught me how to bring ideas to life through code, but it was moving 
-into product management that really opened my eyes to the bigger picture. I learned that great 
-products aren't just about clean code or fancy features - they're about understanding what people 
-truly need and finding elegant ways to deliver it. This perspective has completely changed how I 
-approach problem-solving, both in my professional work and personal projects.
-
-Speaking of personal projects - last year I found myself frustrated with how complicated it was to 
-manage shared finances with my partner. Instead of settling for existing solutions that didn't quite 
-fit, I decided to build something better. That's just how my mind works - when I see a problem that 
-affects real people (in this case, couples trying to budget together), I can't help but roll up my 
-sleeves and create a solution. It's this combination of technical skills and human-centered thinking 
-that gets me excited about what I do.
-
-*/

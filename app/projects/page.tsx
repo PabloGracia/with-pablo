@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import logoRocket from "@/images/logos/Rocket Holding Hand.svg";
 import mourningRibbon from "@/images/logos/Black Ribbon.svg";
+import squareCircleLogo from "@/images/logos/square-circle-logo.svg";
 import { SimpleLayout } from "@/components/SimpleLayout";
 
 type ProjectProps = {
@@ -25,6 +26,12 @@ const PROJECTS: ProjectProps[] = [
     description: 'Volunteering "marketplace"',
     href: "/projects/ajudadana",
     logo: mourningRibbon,
+  },
+  {
+    title: "Pynqle",
+    description: "Track your expenses with your significant other",
+    href: "/projects/pynqle",
+    logo: squareCircleLogo,
   },
 ];
 
